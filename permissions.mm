@@ -804,8 +804,17 @@ void AskForAccessibilityAccess(const Napi::CallbackInfo &info) {
   }
 }
 
+void WorkspaceOpenURL(const Napi::CallbackInfo &info) {
+  const std::string path = info[0].As<Napi::String>().Utf8Value();
+  NSWorkspace *workspace = [[NSWorkspace alloc] init];
+  NSString *pref_string = [NSString stringWithFormat:@"%s", path.c_str()];
+  [workspace openURL:[NSURL URLWithString:pref_string]];
+}
+
 // Initializes all functions exposed to JS
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
+  exports.Set(Napi::String::New(env, "openURL"),
+              Napi::Function::New(env, WorkspaceOpenURL));
   exports.Set(Napi::String::New(env, "getAuthStatus"),
               Napi::Function::New(env, GetAuthStatus));
   exports.Set(Napi::String::New(env, "askForContactsAccess"),

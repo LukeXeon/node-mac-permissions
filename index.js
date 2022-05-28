@@ -49,6 +49,7 @@ module.exports = {
   askForCalendarAccess: permissions.askForCalendarAccess,
   askForCameraAccess: permissions.askForCameraAccess,
   askForContactsAccess: permissions.askForContactsAccess,
+  openURL: permissions.openURL,
   askForFoldersAccess,
   askForFullDiskAccess: permissions.askForFullDiskAccess,
   askForInputMonitoringAccess: permissions.askForInputMonitoringAccess,
