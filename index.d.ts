@@ -27,7 +27,7 @@ export function askForScreenCaptureAccess(): undefined
 
 export function getAuthStatus(authType: AuthType): PermissionType | 'not determined'
 
-export function openURL(url: string)
+export function openURL(url: string): undefined
 
 export type AuthType =
     | 'accessibility'
